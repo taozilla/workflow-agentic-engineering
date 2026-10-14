@@ -1,0 +1,11 @@
+trust_level: 3
+
+permissions:
+  create_commit: true
+  create_pull_request: true
+  merge: false
+
+review:
+  strategy: human_sampling
+  sampling_enabled: true
+  verifier_count: 2

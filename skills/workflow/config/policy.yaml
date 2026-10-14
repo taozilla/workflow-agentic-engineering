@@ -1,0 +1,43 @@
+version: 1
+
+# 0 = analysis only
+# 1 = edit with human-operated verification
+# 2 = edit and verify, human reviews and merges
+# 3 = prepare commit or pull request, human merges
+# 4 = autonomous merge when every required gate passes
+trust_level: 2
+
+permissions:
+  edit_files: true
+  install_dependencies: ask
+  run_local_commands: true
+  run_browser_verification: true
+  create_commit: false
+  create_pull_request: false
+  merge: false
+  deploy: false
+  destructive_operations: false
+
+verification:
+  require_relevant_tests: true
+  require_typecheck_if_available: true
+  require_lint_if_available: true
+  require_build_for_production_changes: true
+  require_ui_flow_for_ui_changes: true
+  require_console_check_for_ui_changes: true
+  require_network_check_for_ui_changes: true
+
+review:
+  strategy: human_review
+  sampling_enabled: false
+  verifier_count: 1
+
+limits:
+  max_repair_iterations: 5
+  max_files_changed_without_replanning: 12
+  max_new_dependency_count: 0
+
+fallback:
+  missing_policy_trust_level: 2
+  ambiguous_action: ask
+  failed_verification: do_not_merge
